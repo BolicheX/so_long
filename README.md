@@ -14,7 +14,7 @@ compilador -lm, man 3 math
 miniLibX
 • ft_printf y cualquier función
 equivalente que tú hayas
-escrito 
+escrito
 
 ## Juego
 * Primer argumento: archivo con la descripción del mapa de extensión `.ber`
@@ -39,8 +39,14 @@ escrito
 * Patrulla de enemigos
 * Sprites animados
 * Contador de movimientos en pantalla
- 
+
 ## Documentación
 
 * [Subject](https://cdn.intra.42.fr/pdf/pdf/135299/es.subject.pdf)
 * [MLX42](https://github.com/codam-coding-college/MLX42).
+* [MiniLibX](https://harm-smits.github.io/42docs/libs/minilibx/introduction.html#introduction-1)
+* [MinilibXIntro](https://www.youtube.com/watch?v=bYS93r6U0zg)
+
+* [Guide](https://42-cursus.gitbook.io/guide/rank-02/so_long)
+* [Guide2](https://gontjarow.github.io/MiniLibX/)
+* [Guide3](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
