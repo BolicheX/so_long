@@ -6,13 +6,12 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:11:26 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/16 21:34:50 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/10/17 19:26:08 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "long_lib.h"
 
-#define MLX_ERROR	1
 #define WIDTH			1920
 #define HEIGHT			1080
 

@@ -6,21 +6,23 @@
 #    By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 21:26:43 by jose-jim          #+#    #+#              #
-#    Updated: 2024/10/16 21:33:22 by jose-jim         ###   ########.fr        #
+#    Updated: 2024/10/17 19:59:23 by jose-jim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -I.
+CFLAGS = -Wall -Wextra -Werror -I -Iinclude.
+LFLAGS = -L. -llong_lib -Lmlx-linux -lmlx_Linux -lX11 -lXext
 LIB = liblong_lib.a
-OBJ = long_lib.o
-SRCS = long_lib.c
-EXEC = myprogram
+SRC = $(wildcard src/*.c)#
+OBJ = $(SRC:%.c=%.o)
+NAME = a
+MAIN = image.c
 
-all: $(EXEC)
+all: $(NAME)
 
-$(EXEC): main.o $(LIB)
-	$(CC) main.o -L. -llong_lib -Lmlx-linux -lmlx_Linux -lX11 -lXext -o $(EXEC)
+$(NAME): main.o $(LIB)
+	$(CC) main.o -L. -llong_lib -Lmlx-linux -lmlx_Linux -lX11 -lXext -o $(NAME)
 
 $(LIB): $(OBJ)
 	ar rcs $@ $^
@@ -28,10 +30,14 @@ $(LIB): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-main.o: main.c
-	$(CC) $(CFLAGS) -c main.c -o main.o
+main.o: $(MAIN)  # Use the MAIN variable here
+	$(CC) $(CFLAGS) -c $(MAIN) -o main.o
 
 clean:
-	rm -f $(OBJ) $(LIB) $(EXEC) main.o
+	rm -f $(OBJ)
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
 
 .PHONY: all clean
