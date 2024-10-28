@@ -7,6 +7,7 @@ int	main(void)
 	int		img_width;
 	int		img_height;
 
+	ft_printf("Hola");
 	data.mlx = mlx_init();
 	if (!data.mlx)
 		end_program(&data, 1);

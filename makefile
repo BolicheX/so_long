@@ -6,39 +6,57 @@
 #    By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 21:26:43 by jose-jim          #+#    #+#              #
-#    Updated: 2024/10/17 22:20:32 by jose-jim         ###   ########.fr        #
+#    Updated: 2024/10/28 21:12:32 by jose-jim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = so_long
+
+HEADERS =	src/so_long.h \
+			include/get_next_line/get_next_line.h \
+			include/ft_printf/ft_printf.h \
+			include/mlx/mlx.h \
+
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror -g -Iinclude.
-LFLAGS = -Lmlx-linux -lmlx_Linux -lX11 -lXext
-DIR_OBJ = obj
-SRC = $(wildcard src/*.c)
-OBJECTS = $(addprefix $(DIR_OBJ)/,$(notdir $(SRC:.c=.o)))
-NAME = so_long
-LIB = $(DIR_OBJ)/so_long.a
+LFLAGS = -Linclude/mlx -lmlx_Linux -lX11 -lXext
 
-all: make_dir $(NAME)
+DIR_OBJ = obj
+SRC = $(wildcard src/*.c) \
+	$(wildcard include/get_next_line/*.c) \
+	$(wildcard include/ft_printf/*.c)
+OBJECTS = $(addprefix $(DIR_OBJ)/,$(notdir $(SRC:.c=.o)))
+
+MLX_PATH = ./include/mlx/
+
+vpath %.c src include/ft_printf include/get_next_line
+
+all: make_libs make_dir $(NAME)
 
 make_dir:
 	@mkdir -p $(DIR_OBJ)
 
-$(NAME): $(OBJECTS)
-	$(CC) $(OBJECTS) $(LFLAGS) -o $(NAME)
+make_libs:
+	@make -C $(MLX_PATH) all > /dev/null 2>&1
+	@echo "minilibx compiled!\n"
 
-$(DIR_OBJ)/%.o: src/%.c | make_dir
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJECTS) $(HEADERS)
+	@$(CC) $(CFLAGS) $(OBJECTS) $(LFLAGS) -o $(NAME)
+	@echo "so_long compiled!\n"
 
-$(LIB): $(OBJECTS)
-	ar rcs $@ $^
+$(DIR_OBJ)/%.o: %.c $(HEADERS) | make_dir
+	@$(CC) $(CFLAGS) -c $< -o $@
+
 
 clean:
-	rm -rf $(DIR_OBJ)
+	@rm -rf $(DIR_OBJ)
+	@make -C $(MLX_PATH) clean > /dev/null 2>&1
+	@echo "Removed object files"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
+	@echo "Removed executable"
 
 re: fclean all
 
-.PHONY: all clean fclean re make_dir
+.PHONY: all clean fclean re make_dir make_libs
