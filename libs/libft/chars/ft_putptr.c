@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 21:32:54 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 13:45:29 by jose-jim         ###   ########.fr       */
+/*   Created: 2024/10/31 12:08:22 by jose-jim          #+#    #+#             */
+/*   Updated: 2024/10/31 14:50:23 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../libft.h"
 
-void my_mlx_pixel_put(t_img *data, int x, int y, int color)
+int	ft_putptr(unsigned long n)
 {
-    char *dst;
+	char		*hex;
+	static int	i;
 
-    dst = data->addr + (y * data->line_length + x * (data->depth / 8));
-    *(unsigned int*)dst = color;
+	i = 0;
+	hex = "0123456789abcdef";
+	if (n == 0)
+	{
+		ft_printf("%s", "(nil)");
+		return (5);
+	}
+	if (n >= 16)
+		ft_putptr(n / 16);
+	if (i == 0)
+		i += write(1, "0x", 2);
+	i += write (1, &hex[n % 16], 1);
+	return (i);
 }

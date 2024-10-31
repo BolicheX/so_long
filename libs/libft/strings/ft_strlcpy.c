@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 21:32:54 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 13:45:29 by jose-jim         ###   ########.fr       */
+/*   Created: 2024/04/15 18:27:52 by jose-jim          #+#    #+#             */
+/*   Updated: 2024/10/31 12:42:58 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../libft.h"
 
-void my_mlx_pixel_put(t_img *data, int x, int y, int color)
+size_t	ft_strlcpy(char *dst, const char *src, size_t n)
 {
-    char *dst;
+	size_t	i;
 
-    dst = data->addr + (y * data->line_length + x * (data->depth / 8));
-    *(unsigned int*)dst = color;
+	i = 0;
+	if (n > 0)
+	{
+		while (src[i] && i < (n - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = 0;
+	}
+	while (src[i])
+		i++;
+	return (i);
 }

@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 21:32:54 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 13:45:29 by jose-jim         ###   ########.fr       */
+/*   Created: 2024/04/24 13:53:43 by jose-jim          #+#    #+#             */
+/*   Updated: 2024/10/31 12:42:42 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../libft.h"
 
-void my_mlx_pixel_put(t_img *data, int x, int y, int color)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-    char *dst;
+	int		i;
 
-    dst = data->addr + (y * data->line_length + x * (data->depth / 8));
-    *(unsigned int*)dst = color;
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

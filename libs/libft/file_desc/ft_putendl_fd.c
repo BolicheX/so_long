@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 21:32:54 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 13:45:29 by jose-jim         ###   ########.fr       */
+/*   Created: 2024/04/24 16:04:45 by jose-jim          #+#    #+#             */
+/*   Updated: 2024/10/31 12:41:32 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../libft.h"
 
-void my_mlx_pixel_put(t_img *data, int x, int y, int color)
+void	ft_putendl_fd(char *s, int fd)
 {
-    char *dst;
-
-    dst = data->addr + (y * data->line_length + x * (data->depth / 8));
-    *(unsigned int*)dst = color;
+	write(fd, s, ft_strlen(s));
+	write(fd, "\n", 1);
 }

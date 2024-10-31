@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 21:32:54 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 13:45:29 by jose-jim         ###   ########.fr       */
+/*   Created: 2024/04/22 21:24:43 by jose-jim          #+#    #+#             */
+/*   Updated: 2024/10/31 12:43:03 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../libft.h"
 
-void my_mlx_pixel_put(t_img *data, int x, int y, int color)
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 {
-    char *dst;
+	int		i;
+	char	*str;
+	int		len;
 
-    dst = data->addr + (y * data->line_length + x * (data->depth / 8));
-    *(unsigned int*)dst = color;
+	i = 0;
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	str = malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (i < len)
+	{
+		str[i] = f(i, s[i]);
+		i++;
+	}
+	str[len] = '\0';
+	return (str);
 }

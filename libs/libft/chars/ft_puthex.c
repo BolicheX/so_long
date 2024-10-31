@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   aux.c                                              :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 21:32:54 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 13:45:29 by jose-jim         ###   ########.fr       */
+/*   Created: 2024/10/31 12:10:39 by jose-jim          #+#    #+#             */
+/*   Updated: 2024/10/31 12:23:57 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../libft.h"
 
-void my_mlx_pixel_put(t_img *data, int x, int y, int color)
+int	ft_puthex(unsigned int number, int conv)
 {
-    char *dst;
+	int	count;
 
-    dst = data->addr + (y * data->line_length + x * (data->depth / 8));
-    *(unsigned int*)dst = color;
+	count = 0;
+	if (number >= 16)
+	{
+		count += ft_puthex((number / 16), conv
+	);
+		count += ft_puthex((number % 16), conv
+	);
+	}
+	else
+	{
+		if (conv
+	 == 'x')
+			count = ft_putchar(HEX_LOWCASE[number]);
+		else
+			count = ft_putchar(HEX_UPCASE[number]);
+	}
+	return (count);
 }

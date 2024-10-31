@@ -50,4 +50,5 @@ escrito
 * [Guide](https://42-cursus.gitbook.io/guide/rank-02/so_long)
 * [Guide2](https://gontjarow.github.io/MiniLibX/)
 * [Guide3](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
-https://github.com/gjmacias/so_long/blob/main/sources/so_long.c
+* [Git1](https://github.com/gjmacias/so_long/blob/main/sources/so_long.c)
+* [Git2](https://github.com/mewmewdevart/so_long/tree/main)

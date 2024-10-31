@@ -6,11 +6,11 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:11:22 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/28 19:55:25 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/10/31 14:38:00 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 int end_program(t_data *data, int cause)
 {
@@ -23,7 +23,6 @@ int end_program(t_data *data, int cause)
 	free(data->mlx);
 	if (cause == 1)
 	{
-		printf("ERROR");
 		return(MLX_ERROR);
 	}
 	exit(0);
