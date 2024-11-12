@@ -52,3 +52,6 @@ escrito
 * [Guide3](https://aurelienbrabant.fr/blog/getting-started-with-the-minilibx)
 * [Git1](https://github.com/gjmacias/so_long/blob/main/sources/so_long.c)
 * [Git2](https://github.com/mewmewdevart/so_long/tree/main)
+* [Git2](https://github.com/tblaase/so_long/tree/master)
+* [Git2](https://github.com/madebypixel02/so_long/tree/main)
+* [Git2](https://github.com/achrafelkhnissi/so_long/tree/master)

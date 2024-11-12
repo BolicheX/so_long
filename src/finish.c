@@ -6,13 +6,13 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 19:11:22 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 14:38:00 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:52:03 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int end_program(t_data *data, int cause)
+int end_program(t_data *data)
 {
 	if (data->img.img)
 		mlx_destroy_image(data->mlx, data->img.img);
@@ -21,10 +21,6 @@ int end_program(t_data *data, int cause)
 	if (data->mlx)
 		mlx_destroy_display(data->mlx);
 	free(data->mlx);
-	if (cause == 1)
-	{
-		return(MLX_ERROR);
-	}
 	exit(0);
 }
 

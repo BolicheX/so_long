@@ -6,24 +6,19 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:35:40 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 17:31:51 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:28:07 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	check_extension(const char	*name, const char	*ext)
+void	ft_check_map(char **argv, t_map *map)
 {
-	size_t	n_len;
-	size_t	e_len;
-
-	if (ft_strcmpr(name))
-}
-
-void	check_map(char *map_file, t_data *data)
-{
-	if (check_extension(map_file, ".ber") != 0)
-		err_extension(map_file);
+	int	fd;
+	if (fd = open(argv[1], O_RDONLY) < 0)
+		ft_error_map("Unable to read file");
+	if (ft_strrncmp(argv[1], ".ber", 4))
+		ft_error_map("Invalid file type, use .ber", NULL);
 	get_map(map_file, data);
 	if (check_rectangular(*data) == 1)
 		err_rectangular(data, file_name);

@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 20:39:13 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 12:43:15 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/11/12 19:14:16 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
-	if (n == 0)
-		return (0);
 	i = 0;
 	if (n == 0)
 		return (0);
@@ -28,17 +26,22 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
 }
 
-/*
-int	main(void)
+int	ft_strrncmp(const char *s1, const char *s2, size_t n)
 {
-	char	*a;
-	char	*b;
-	int     c;
+	size_t	i;
+	size_t	s1_len;
+	size_t	s2_len;
 
-	a = "ABCDZ";
-	b = "ACCDZ";
-	c = 2;
-	printf("Mi Funcion: %d\n", ft_strncmp(a, b, c));
-	printf("Original: %d\n", strncmp(a, b, c));
-	return (0);
-}*/
+	i = 0;
+	if (n == 0)
+		return (0);
+	s1_len = ft_strlen(s1) -1;
+	s2_len = ft_strlen(s2) - 1;
+	while (s1_len >= 0 && s2_len >= 0 && s1[s1_len] == s2[s2_len] && i < n - 1)
+	{
+		i++;
+		s1_len--;
+		s2_len--;
+	}
+	return ((unsigned char) s1[s1_len] - (unsigned char) s2[s2_len]);
+}

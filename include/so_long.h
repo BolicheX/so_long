@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 21:13:46 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 16:31:22 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/11/12 18:52:44 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,27 @@
 #define WIDTH			1920
 #define HEIGHT			1080
 
-
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
 #include <X11/keysym.h>
 
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		depth;
-	int		line_length;
-	int		endian;
-}t_img;
 
 typedef struct s_game
 {
-	int	count_player;
-	int	count_exit;
-	int	count_collectible;
-	int	count_wall;
-	int	count_empty;
-	int	count_movements;
+	int	n_row;
+	int	n_col;
+	int	n_exit;
+	int	n_pl;
+	int	n_star;
 	int	endgame;
 }	t_game;
 
 typedef struct s_map
 {
-	char	*name;
 	int		height;
 	int		widht;
-	char	**matrice;
+	char	**content;
 }t_map;
 
 typedef struct s_data
