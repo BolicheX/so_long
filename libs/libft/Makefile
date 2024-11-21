@@ -6,7 +6,7 @@
 #    By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 12:12:48 by jose-jim          #+#    #+#              #
-#    Updated: 2024/10/31 14:56:44 by jose-jim         ###   ########.fr        #
+#    Updated: 2024/11/21 13:50:39 by jose-jim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC = chars/ft_putchar.c \
 		file_desc/ft_putstr_fd.c \
 		file_desc/ft_putendl_fd.c \
 		file_desc/ft_putnbr_fd.c \
+		file_desc/ft_countlines_fd.c \
 		memory/ft_bzero.c \
 		memory/ft_calloc.c \
 		memory/ft_memcpy.c \

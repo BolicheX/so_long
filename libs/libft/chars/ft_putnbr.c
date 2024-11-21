@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 12:09:49 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 14:50:46 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/11/21 17:02:12 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,12 @@ int	ft_putnbr_unsign(unsigned int n)
 	unsigned int	nbr;
 
 	nbr = 0;
-	if (n
- <= 9)
-		return (ft_putchar((n
-	 + 48)));
+	if (n <= 9)
+		return (ft_putchar((n + 48)));
 	else
 	{
-		nbr += ft_putnbr_unsign(n
-	 / 10);
-		nbr += ft_putchar((n
-	 % 10) + 48);
+		nbr += ft_putnbr_unsign(n / 10);
+		nbr += ft_putchar((n % 10) + 48);
 	}
 	return (nbr);
 }

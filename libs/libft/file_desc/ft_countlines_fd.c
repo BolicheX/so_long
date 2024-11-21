@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_countlines_fd.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/31 12:10:39 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/11/21 17:02:18 by jose-jim         ###   ########.fr       */
+/*   Created: 2024/11/21 13:49:32 by jose-jim          #+#    #+#             */
+/*   Updated: 2024/11/21 17:27:04 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_puthex(unsigned int number, int conv)
+int	ft_countlines_fd(int fd)
 {
-	int	count;
+	int		bytes;
+	int		lines;
+	int		i;
+	char	buff[BUFFER_SIZE];
 
-	count = 0;
-	if (number >= 16)
+	bytes = 1;
+	lines = 0;
+	while (bytes > 0)
 	{
-		count += ft_puthex((number / 16), conv);
-		count += ft_puthex((number % 16), conv);
+		i = 0;
+		bytes = read(fd, buff, BUFFER_SIZE);
+		if (bytes < 0)
+			return (-1);
+		while (i < bytes)
+		{
+			if (buff[i] == '\n')
+				lines++;
+			i++;
+		}
 	}
-	else
-	{
-		if (conv == 'x')
-			count = ft_putchar(HEX_LOWCASE[number]);
-		else
-			count = ft_putchar(HEX_UPCASE[number]);
-	}
-	return (count);
+	return (lines + 1);
 }
