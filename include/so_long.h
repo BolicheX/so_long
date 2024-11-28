@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 21:13:46 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/11/21 17:00:33 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/11/28 17:19:48 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,25 @@
 
 # include <stdio.h>
 
+typedef struct s_fill
+{
+	char	**map;
+	int		exit;
+	int		coll;
+}	t_fill;
+
 typedef struct s_game
 {
 	char	**map;
 	int		n_row;
 	int		n_col;
-	int		n_exit;
-	int		n_pl;
-	int		n_coll;
+	int		exit;
+	int		player;
+	int		coll;
+	int		player_x;
+	int		player_y;
 	int		endgame;
+	t_fill	fill;
 }	t_game;
 
 typedef struct s_data
@@ -58,9 +68,15 @@ void	print_char_array(char **arr);
 int		ft_error_map(char *msg, char **map_str);
 t_game	ft_newgame(void);
 void	ft_check_content(t_game *game);
-char	**ft_check_map(char *map_file, t_game *game);
-char	**ft_get_map(int fd, t_game *game);
-void	ft_count_content(char c, t_game *game);
+void	ft_check_map(char *map_file, t_game *game);
+void	ft_get_map(char *map_file, t_game *game);
 void	ft_check_line(char *line, int row, t_game *game);
+int		ft_linelen(int fd);
+
+void	ft_validate_path(t_game *game);
+void	ft_flood_fill(t_game *game,t_fill *fill, int x, int y);
+char	**ft_map_clone(t_game *game);
+
+int	ft_free_map(char **map);
 
 #endif
