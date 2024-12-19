@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 17:31:43 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/11/28 16:29:17 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:43:49 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ void	print_char_array(char **arr)
 
 int	main(int argc, char **argv)
 {
-	//t_data	data;
 	t_game	game;
 
 	setbuf(stdout, NULL);
 	if (argc != 2)
 		ft_error_map("Usage: ./so_long.c <filename>.ber", NULL);
 	ft_check_map(argv[1], &game);
-	//print_char_array(game.map);
+	ft_start_game(&game);
 	free(game.map);
 	return(0);
 }

@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 17:35:40 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/11/28 18:01:18 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:44:29 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	ft_check_map(char *map_file, t_game *game)
 		ft_error_map("Invalid file type, use .ber", NULL);
 	*game = ft_newgame();
 	game->n_row = ft_countlines_fd(fd);
+	close(fd);
+	fd = open(map_file, O_RDONLY);
 	game->n_col = ft_linelen(fd);
 	close(fd);
 	game->map = calloc(game->n_row + 1, sizeof(char *));

@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 21:13:46 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/11/28 17:19:48 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:51:22 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define RES 32
 # define ESC	53
+# define WIN_CLOSE 17
 # define W		13
 # define A		0
 # define S		1
@@ -31,6 +32,15 @@
 # include <X11/keysym.h>
 
 # include <stdio.h>
+
+typedef struct s_img
+{
+	void	*player;
+	void	*background;
+	void	*wall;
+	void	*exit;
+	void	*collect;
+}				t_img;
 
 typedef struct s_fill
 {
@@ -57,6 +67,7 @@ typedef struct s_data
 {
 	void	*mlx;
 	void	*win;
+	char	**map;
 	int		heigth;
 	int		width;
 	int		count;
@@ -77,6 +88,10 @@ void	ft_validate_path(t_game *game);
 void	ft_flood_fill(t_game *game,t_fill *fill, int x, int y);
 char	**ft_map_clone(t_game *game);
 
-int	ft_free_map(char **map);
+int		ft_free_map(char **map);
+
+void	ft_start_game(t_game *game);
+t_data	ft_newdata(t_data *data, t_game *game);
+int		ft_end_game(char *msg, char **map_str, t_data *data);
 
 #endif

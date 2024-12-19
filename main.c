@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 20:11:26 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/17 20:33:50 by jose-jim         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:08:57 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ int	main(void)
 	}
 	data.img.img = mlx_new_image(data.mlx, WIDTH, HEIGHT);
 	data.img.addr = mlx_get_data_addr(data.img.img, &data.img.depth, &data.img.line_length, &data.img.endian);
-
 	mlx_key_hook(data.win, handle_input, &data);
 	mlx_loop(data.mlx);
 	mlx_destroy_image(data.mlx, data.img.img);
