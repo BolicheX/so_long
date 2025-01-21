@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 13:49:32 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/11/21 17:27:04 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/16 21:02:18 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	ft_countlines_fd(int fd)
 	int		lines;
 	int		i;
 	char	buff[BUFFER_SIZE];
+	char	last;
 
 	bytes = 1;
 	lines = 0;
@@ -31,8 +32,9 @@ int	ft_countlines_fd(int fd)
 		{
 			if (buff[i] == '\n')
 				lines++;
+			last = buff[i];
 			i++;
 		}
 	}
-	return (lines + 1);
+	return (lines + (last != '\n'));
 }

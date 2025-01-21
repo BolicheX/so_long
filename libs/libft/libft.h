@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 20:47:45 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/12/19 14:45:15 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:46:59 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 // buffer_size of gnl
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 5
 # endif
 
 // hexadecimal of ft_printf - putptr, puthexa

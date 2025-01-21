@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:18:20 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/12/19 16:39:45 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/21 01:12:42 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@ int	ft_linelen(int fd)
 	char	buff[BUFFER_SIZE];
 	int		bytes;
 	int		len;
+	int		len_old;
 
 	bytes = 1;
 	len = 0;
-	while (bytes == 1)
+	len_old = 0;
+	while (bytes > 0)
 	{
-		printf("bytes %d\n", bytes);
+		len = 0;
 		bytes = read(fd, buff, BUFFER_SIZE);
-		printf("bytes %d\n", bytes);
-		printf("buff: %s\n", buff);
-		while (buff[len] && buff[len] != '\n')
+		if (bytes <= 0)
+			break ;
+		while (buff[len] != '\n' && len < bytes)
 			len++;
-		if (buff[len] == '\n')
-			return (len);
-		else
-			break;
+		len_old = len_old + len;
+		if (len < bytes && buff[len] == '\n')
+			return (len_old);
 	}
-	ft_error_map("Map invalid", NULL);
 	return (0);
 }
 
@@ -55,9 +55,30 @@ t_game	ft_newgame(void)
 t_data	ft_newdata(t_data *data, t_game *game)
 {
 	data->map = game->map;
+	data->player_x = game->player_x;
+	data->player_y = game->player_y;
 	data->heigth = game->n_row;
 	data->width = game->n_col;
+	data->coll = game->coll;
 	data->count = 0;
 	data->collected = 0;
 	return (*data);
+}
+
+//hola
+
+int	ft_random(int col, int row)
+{
+	int	seed;
+	int	random_value;
+
+	seed = (row * 31 + col * 37);
+	seed = (16807 * seed) % 2147483647;
+	if (seed < 0)
+		seed += 2147483647;
+	if ((seed % 100) < 60)
+		random_value = 0;
+	else
+		random_value = 1 + (seed % 6);
+	return (random_value);
 }

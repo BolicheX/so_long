@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:00:12 by jose-jim          #+#    #+#             */
-/*   Updated: 2024/10/31 12:50:40 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/20 01:18:49 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*add_buff(int fd, char *save, char *buff)
 		if (bytes < 0)
 		{
 			free(save);
+			free(buff);
 			return (NULL);
 		}
 		buff[bytes] = '\0';
