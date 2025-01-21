@@ -6,7 +6,7 @@
 #    By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 21:26:43 by jose-jim          #+#    #+#              #
-#    Updated: 2025/01/17 14:39:39 by jose-jim         ###   ########.fr        #
+#    Updated: 2025/01/21 15:52:15 by jose-jim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@
 NAME = so_long
 
 # Compilation flags
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g3
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 # Linker flags : 'libft', 'mlx' and 'mlx' for Linux, 'lib' for X Window System, 'xext' for a single extension, and 'lm' for the math library
 LFLAGS = -lft -lmlx -lmlx_Linux -lX11 -lXext -lm
 
