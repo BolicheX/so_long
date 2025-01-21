@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 13:18:20 by jose-jim          #+#    #+#             */
-/*   Updated: 2025/01/21 01:12:42 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:40:04 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_data	ft_newdata(t_data *data, t_game *game)
 	data->coll = game->coll;
 	data->count = 0;
 	data->collected = 0;
+	data->victory = 0;
 	return (*data);
 }
 

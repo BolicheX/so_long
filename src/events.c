@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:35:58 by jose-jim          #+#    #+#             */
-/*   Updated: 2025/01/21 01:46:44 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:38:27 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ int	ft_handle_input(int key, t_data *data)
 {
 	if (key == XK_Escape)
 	{
-		printf("Quiting game.\n");
-		ft_end_game(0, data->map, data);
+		ft_close(data);
 	}
 	else if (key == XK_w)
 		ft_movement(data, 0, -1);
@@ -58,7 +57,10 @@ void	ft_movement(t_data *data, int x, int y)
 			}
 		}
 		if (data->map[new_y][new_x] == EXIT && data->collected == data->coll)
+		{
+			data->victory = 1;
 			ft_end_game(0, data->map, data);
+		}
 		if (data->map[new_y][new_x] != EXIT)
 			ft_move_ok(data, new_y, new_x);
 	}

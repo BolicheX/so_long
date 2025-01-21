@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/31 17:27:11 by jose-jim          #+#    #+#             */
-/*   Updated: 2025/01/21 01:26:30 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:39:52 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	ft_end_game(char *msg, char **map_str, t_data *data)
 		free(msg);
 		exit(EXIT_FAILURE);
 	}
-	if (data->collected == data->coll)
+	if (data->victory == 1)
 		ft_printf("Congratulations! You won!\nFinal Score: %d\n", data->count);
 	exit(0);
 }
