@@ -6,11 +6,26 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/28 16:04:55 by jose-jim          #+#    #+#             */
-/*   Updated: 2025/01/20 00:49:11 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/21 01:30:15 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	ft_validate_path(t_game *game)
+{
+	t_fill	fill;
+
+	fill.map = ft_map_clone(game);
+	fill.coll = 0;
+	fill.exit = 0;
+	fill.x = game->player_x;
+	fill.y = game->player_y;
+	ft_flood_fill(game, &fill, fill.x, fill.y);
+	ft_free_map(fill.map);
+	if (game->coll != fill.coll || game->exit != fill.exit)
+		ft_error_map("Map must have a valid path to win", game);
+}
 
 char	**ft_map_clone(t_game *game)
 {
@@ -31,50 +46,25 @@ char	**ft_map_clone(t_game *game)
 		}
 		i++;
 	}
-	//printf("Clone OK\n");
 	return (clone);
 }
 
 void	ft_flood_fill(t_game *game, t_fill *fill, int x, int y)
 {
-	//printf("exploring: (%d,%d)[%c]\n", y, x, fill->map[y][x]);
 	if (fill->map[y][x] == 'E')
 	{
-		//printf("Exit reached at(%d,%d)\n", y, x);
 		fill->exit++;
 		fill->map[y][x] = 'V';
 	}
 	if (x < 0 || y < 0 || x >= game->n_col || y >= game->n_row
 		|| fill->map[y][x] == '1' || fill->map[y][x] == 'V')
 		return ;
-	//printf("exploring: (%d,%d)[%c]\n", y, x, fill->map[y][x]);
 	if (fill->map[y][x] == 'C')
-	{
 		fill->coll++;
-		//printf("Colectible reached at(%d,%d)\n", y, x);
-	}
 	fill->map[y][x] = 'V';
 	ft_flood_fill(game, fill, x + 1, y);
 	ft_flood_fill(game, fill, x, y +1);
 	ft_flood_fill(game, fill, x - 1, y);
 	ft_flood_fill(game, fill, x, y - 1);
 	return ;
-}
-
-void	ft_validate_path(t_game *game)
-{
-	t_fill	fill;
-
-	fill.map = ft_map_clone(game);
-	fill.coll = 0;
-	fill.exit = 0;
-	fill.x = game->player_x;
-	fill.y = game->player_y;
-	ft_flood_fill(game, &fill, fill.x, fill.y);
-	//printf("Fill OK\n");
-	ft_free_map(fill.map);
-	//ft_printf("%d%d%d%d", game->coll, fill.coll, game->exit, fill.exit);
-	if (game->coll != fill.coll || game->exit != fill.exit)
-		ft_error_map("Map must have a valid path to win", game);
-	//printf("Path OK\n");
 }

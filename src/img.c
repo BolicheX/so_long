@@ -6,7 +6,7 @@
 /*   By: jose-jim <jose-jim@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 22:00:15 by jose-jim          #+#    #+#             */
-/*   Updated: 2025/01/20 23:39:35 by jose-jim         ###   ########.fr       */
+/*   Updated: 2025/01/21 01:24:40 by jose-jim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_img_load(t_data *data, void **img, char *path)
 
 void	ft_img_init(t_data *data)
 {
-	//ft_img_load(data, &data->img.mino, "sprites/mino_r.xpm");
 	ft_img_new(data);
 	ft_img_load(data, &data->img.mino_r, "sprites/mino_r.xpm");
 	ft_img_load(data, &data->img.mino_l, "sprites/mino_l.xpm");
@@ -42,14 +41,12 @@ void	ft_img_init(t_data *data)
 	ft_img_load(data, &data->img.floor[6], "sprites/bg6.xpm");
 	ft_img_load(data, &data->img.wall_1, "sprites/wall_1.xpm");
 	ft_img_load(data, &data->img.wall_2, "sprites/wall_2.xpm");
-	//ft_img_load(data, &data->img.exit_o, "sprites/door_o.xpm");
 	ft_img_load(data, &data->img.exit_c, "sprites/door_c.xpm");
 	ft_img_load(data, &data->img.collect, "sprites/diary.xpm");
 	data->img.mino = data->img.mino_r;
-	//ft_printf("Textures loaded\n");
 }
 
-void ft_img_new(t_data *data)
+void	ft_img_new(t_data *data)
 {
 	int	i;
 
@@ -61,6 +58,26 @@ void ft_img_new(t_data *data)
 	data->img.wall_1 = NULL;
 	data->img.wall_2 = NULL;
 	data->img.exit_c = NULL;
-	//data->img.exit_o = NULL;
 	data->img.collect = NULL;
+}
+
+void	ft_free_img(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	ft_destroy_img(data->mlx, data->img.mino_l);
+	ft_destroy_img(data->mlx, data->img.mino_r);
+	while (i < 7)
+		ft_destroy_img(data->mlx, data->img.floor[i++]);
+	ft_destroy_img(data->mlx, data->img.wall_1);
+	ft_destroy_img(data->mlx, data->img.wall_2);
+	ft_destroy_img(data->mlx, data->img.exit_c);
+	ft_destroy_img(data->mlx, data->img.collect);
+}
+
+void	ft_destroy_img(void *mlx_ptr, void *img_ptr)
+{
+	if (img_ptr)
+		mlx_destroy_image(mlx_ptr, img_ptr);
 }
